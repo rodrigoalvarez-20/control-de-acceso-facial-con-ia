@@ -52,13 +52,13 @@ class GraphicalUserInterface:
         self.database = DataBasePaths()
         self.face_sign_up = FaceSignUp()
         self.face_login = FaceLogIn()
-        self.com = SerialCommunication()
+        self.com = None #SerialCommunication()
 
         # process
         self.main()
 
     def close_login(self):
-        self.com.sending_data('C')
+        #self.com.sending_data('C')
         self.face_login.__init__()
         self.face_login_window.destroy()
         self.login_video.destroy()
@@ -85,10 +85,10 @@ class GraphicalUserInterface:
 
                 if user_access:
                     # serial communication
-                    self.com.sending_data('A')
+                    #self.com.sending_data('A')
                     self.login_video.after(2000, self.close_login)
                 elif user_access is False:
-                    self.com.sending_data('C')
+                    #self.com.sending_data('C')
                     self.login_video.after(2000, self.close_login)
 
         else:
